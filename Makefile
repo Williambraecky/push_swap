@@ -6,7 +6,7 @@
 #    By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/25 13:02:54 by wbraeckm          #+#    #+#              #
-#    Updated: 2018/09/25 15:41:05 by wbraeckm         ###   ########.fr        #
+#    Updated: 2018/09/25 17:57:42 by wbraeckm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,11 +46,10 @@ all: lib $(NAME_CHECKER) $(NAME_PUSHSWAP)
 
 $(OBJFOLDER)/%.o:$(SRCSFOLDER)/%.c
 	@printf $(ccblue)
-	@printf "Compiling "
-	@printf "%-$(LONGEST)s" $(notdir $<)
+	@printf "Compiling %-$(LONGEST)s" $(notdir $<)
 	@$(CC) $(FLAGS) -o $@ -c $< -I$(INCLUDES) -I$(LIBINCLUDES)
 	@printf $(cclightgray)[$(ccgreenhard)√$(cclightgray)]$(ccreset)
-	@printf "\n"
+	@printf "\r"
 
 $(OBJSUBS):
 	@mkdir $@
@@ -60,15 +59,19 @@ lib:
 
 $(NAME_CHECKER): $(OBJSUBS) $(OBJ)
 	@printf $(cccyan)
-	$(CC) $(FLAGS) -o $(NAME_CHECKER) $(CHECKEROBJ) -I$(INCLUDES) \
+	@printf "Compiling $(NAME_CHECKER) "
+	@$(CC) $(FLAGS) -o $(NAME_CHECKER) $(CHECKEROBJ) -I$(INCLUDES) \
 -I$(LIBINCLUDES) $(LIBFT)
-	@printf $(ccreset)
+	@printf $(cclightgray)[$(ccgreenhard)√$(cclightgray)]$(ccreset)
+	@printf "                                                     \n"
 
 $(NAME_PUSHSWAP): $(OBJSUBS) $(OBJ)
 	@printf $(cccyan)
-	$(CC) $(FLAGS) -o $(NAME_PUSHSWAP) $(PUSHSWAPOBJ) -I$(INCLUDES) \
+	@printf "Compiling $(NAME_PUSHSWAP)"
+	@$(CC) $(FLAGS) -o $(NAME_PUSHSWAP) $(PUSHSWAPOBJ) -I$(INCLUDES) \
 -I$(LIBINCLUDES) $(LIBFT)
-	@printf $(ccreset)
+	@printf $(cclightgray)[$(ccgreenhard)√$(cclightgray)]$(ccreset)
+	@printf "                                                     \n"
 
 clean:
 	@printf $(ccred)
@@ -82,10 +85,7 @@ fclean: clean
 	@make -C $(LIBFOLDER) fclean
 	@printf $(ccreset)
 
-re-lib:
-	@make -C $(LIBFOLDER) re
-
-re: fclean re-lib all
+re: fclean all
 
 norm:
 	@norminette $(SRCSFOLDER) $(INCLUDES)

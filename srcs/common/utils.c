@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:51:30 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/25 17:05:50 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/25 17:36:04 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,33 +28,6 @@ static char	*g_strs[] =
 	NULL
 };
 
-void		(*ft_get_operation(char *str))()
-{
-	if (ft_strequ(str, "sa"))
-		return (ft_sa);
-	else if (ft_strequ(str, "sb"))
-		return (ft_sb);
-	else if (ft_strequ(str, "ss"))
-		return (ft_ss);
-	else if (ft_strequ(str, "pa"))
-		return (ft_pa);
-	else if (ft_strequ(str, "pb"))
-		return (ft_pb);
-	else if (ft_strequ(str, "ra"))
-		return (ft_ra);
-	else if (ft_strequ(str, "rb"))
-		return (ft_rb);
-	else if (ft_strequ(str, "rr"))
-		return (ft_rr);
-	else if (ft_strequ(str, "rra"))
-		return (ft_rra);
-	else if (ft_strequ(str, "rrb"))
-		return (ft_rrb);
-	else if (ft_strequ(str, "rrr"))
-		return (ft_rrr);
-	return (NULL);
-}
-
 int			ft_is_valid_operation(char *str)
 {
 	int i;
@@ -74,7 +47,7 @@ void		ft_print_piles(t_ps *ps)
 	while (i > 0)
 	{
 		if (i > ps->size_a + 1)
-			ft_printf("%*c", ps->intlen_max + 2 , ' ');
+			ft_printf("%*c", ps->intlen_max + 2, ' ');
 		else if (i == ps->size_a + 1)
 			ft_printf("{cyan}/%*c\\{eoc}", ps->intlen_max, 'A');
 		else

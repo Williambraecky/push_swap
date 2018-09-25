@@ -6,11 +6,38 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:07:50 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/25 16:51:28 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/25 17:48:20 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps_checker.h"
+
+void	(*ft_get_operation(char *str))()
+{
+	if (ft_strequ(str, "sa"))
+		return (ft_sa);
+	else if (ft_strequ(str, "sb"))
+		return (ft_sb);
+	else if (ft_strequ(str, "ss"))
+		return (ft_ss);
+	else if (ft_strequ(str, "pa"))
+		return (ft_pa);
+	else if (ft_strequ(str, "pb"))
+		return (ft_pb);
+	else if (ft_strequ(str, "ra"))
+		return (ft_ra);
+	else if (ft_strequ(str, "rb"))
+		return (ft_rb);
+	else if (ft_strequ(str, "rr"))
+		return (ft_rr);
+	else if (ft_strequ(str, "rra"))
+		return (ft_rra);
+	else if (ft_strequ(str, "rrb"))
+		return (ft_rrb);
+	else if (ft_strequ(str, "rrr"))
+		return (ft_rrr);
+	return (NULL);
+}
 
 void	ft_read_operations(t_ps *ps)
 {
