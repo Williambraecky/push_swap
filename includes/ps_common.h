@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:26:06 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/25 17:36:06 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/25 19:09:18 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ struct		s_pushswap
 	int		size_b;
 	int		maxsize;
 	int		intlen_max;
+	int		print;
 };
 
 /*
