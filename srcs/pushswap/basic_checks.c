@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 18:44:15 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/25 19:11:41 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/25 19:12:30 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ void	ft_check_rotation_only(t_ps *ps)
 		while (j++ < ps->size_a)
 			ft_rra(ps);
 }
+
+/*
+** Count anomalies and do stuff if not a lot
+*/
 
 void	ft_check_basics(t_ps *ps)
 {
