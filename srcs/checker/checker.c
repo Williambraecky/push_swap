@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:07:50 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/25 17:48:20 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/25 18:28:13 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int		main(int argc, char *argv[])
 	ps = ft_read_input(argc, argv);
 	ft_print_piles(ps);
 	ft_read_operations(ps);
-	if (ft_is_ordered(ps))
+	if (ft_is_ordered(ps) && ps->size_a == ps->maxsize)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");

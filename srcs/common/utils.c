@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:51:30 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/25 17:36:04 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/25 18:03:14 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ int			ft_is_ordered(t_ps *ps)
 {
 	int i;
 
-	if (ps->size_a != ps->maxsize)
-		return (0);
 	i = 0;
 	while (i < ps->size_a - 1)
 	{
