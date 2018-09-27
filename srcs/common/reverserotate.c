@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 15:22:38 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/25 19:10:47 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/27 17:33:56 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	ft_irra(t_ps *ps, int print)
 	ps->pile_a[ft_index(ps, 0, PILE_A)] = tmp;
 }
 
-void	ft_rra(t_ps *ps)
+void		ft_rra(t_ps *ps)
 {
 	ft_irra(ps, ps->print);
 }
@@ -47,12 +47,12 @@ static void	ft_irrb(t_ps *ps, int print)
 	ps->pile_b[ft_index(ps, 0, PILE_B)] = tmp;
 }
 
-void	ft_rrb(t_ps *ps)
+void		ft_rrb(t_ps *ps)
 {
 	ft_irrb(ps, ps->print);
 }
 
-void	ft_rrr(t_ps *ps)
+void		ft_rrr(t_ps *ps)
 {
 	if (ps->print)
 		ft_putstr("rrr\n");

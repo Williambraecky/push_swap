@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:18:20 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/25 19:09:29 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/27 18:04:37 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int		main(int argc, char *argv[])
 	ps = ft_read_input(argc, argv);
 	ps->print = 1;
 	ft_check_basics(ps);
-	ft_print_piles(ps);
+	if (!ft_is_ordered(ps))
+		ft_advanced_checks(ps);
 	ft_free_ps(ps);
 	return (0);
 }

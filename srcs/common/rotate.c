@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 15:16:44 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/25 19:09:54 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/27 17:33:28 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static void	ft_irb(t_ps *ps, int print)
 			ps->pile_b + ft_index(ps, 1, PILE_B),
 			(ps->size_b * sizeof(*(ps->pile_b))));
 	ps->pile_b[ft_index(ps, ps->size_b - 1, PILE_B)] = tmp;
-
 }
 
 void		ft_rb(t_ps *ps)

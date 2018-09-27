@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 15:08:39 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/25 19:10:23 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/27 17:33:41 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void		ft_sb(t_ps *ps)
 	ft_isb(ps, ps->print);
 }
 
-void	ft_ss(t_ps *ps)
+void		ft_ss(t_ps *ps)
 {
 	if (ps->print)
 		ft_putstr("ss\n");
