@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 12:19:51 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/27 18:03:47 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/27 18:26:00 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,31 @@ int		ft_find_biggest_b(t_ps *ps)
 
 void	ft_push_position(t_ps *ps, int position, int target)
 {
+	void	(*a_fun)();
+	void	(*b_fun)();
+
 	if (position <= ps->size_a / 2)
+		a_fun = ft_ra;
+	else
+	{
+		a_fun = ft_rra;
+		position = ps->size_a - position;
+	}
+	if (target <= ps->size_b / 2)
+		b_fun = ft_rb;
+	else
+	{
+		b_fun = ft_rrb;
+		target = ps->size_b - target;
+	}
+	while (target-- > 0 || position-- > 0)
+	{
+		if (target > 0)
+			b_fun(ps);
+		if (position > 0)
+			a_fun(ps);
+	}
+	/*if (position <= ps->size_a / 2)
 		while (position--)
 			ft_ra(ps);
 	else
@@ -46,7 +70,7 @@ void	ft_push_position(t_ps *ps, int position, int target)
 			ft_rb(ps);
 	else
 		while (target++ < ps->size_b)
-			ft_rrb(ps);
+			ft_rrb(ps);*/
 	ft_pb(ps);
 }
 
