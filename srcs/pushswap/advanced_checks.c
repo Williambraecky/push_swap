@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 12:19:51 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/27 18:26:00 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/27 22:29:02 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,46 +31,33 @@ int		ft_find_biggest_b(t_ps *ps)
 
 /*
 ** Move to top then move to calculated position
+** TODO: better movements calculation based on rr or rrr
 */
 
 void	ft_push_position(t_ps *ps, int position, int target)
 {
-	void	(*a_fun)();
-	void	(*b_fun)();
+	int	a_strat;
+	int	b_strat;
 
 	if (position <= ps->size_a / 2)
-		a_fun = ft_ra;
-	else
-	{
-		a_fun = ft_rra;
+		a_strat = TOP;
+	else if ((a_strat = BOTTOM))
 		position = ps->size_a - position;
-	}
 	if (target <= ps->size_b / 2)
-		b_fun = ft_rb;
-	else
-	{
-		b_fun = ft_rrb;
+		b_strat = TOP;
+	else if ((b_strat = BOTTOM))
 		target = ps->size_b - target;
-	}
-	while (target-- > 0 || position-- > 0)
+	while (target > 0 || position > 0)
 	{
-		if (target > 0)
-			b_fun(ps);
-		if (position > 0)
-			a_fun(ps);
+		if (a_strat == b_strat && target > 0 && position > 0)
+			a_strat == TOP ? ft_rr(ps) : ft_rrr(ps);
+		if (position > 0 && (a_strat != b_strat || target <= 0))
+			a_strat == TOP ? ft_ra(ps) : ft_rra(ps);
+		if (target > 0 && (a_strat != b_strat || position <= 0))
+			b_strat == TOP ? ft_rb(ps) : ft_rrb(ps);
+		target--;
+		position--;
 	}
-	/*if (position <= ps->size_a / 2)
-		while (position--)
-			ft_ra(ps);
-	else
-		while (position++ < ps->size_a)
-			ft_rra(ps);
-	if (target <= ps->size_b / 2)
-		while (target--)
-			ft_rb(ps);
-	else
-		while (target++ < ps->size_b)
-			ft_rrb(ps);*/
 	ft_pb(ps);
 }
 
