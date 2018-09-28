@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 12:19:51 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/28 15:54:09 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/28 17:36:49 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_both_rotation(t_ps *ps, int movs[5])
 		b_strat = TOP;
 	else if ((b_strat = BOTTOM))
 		movs[2] = movs[3];
-	while (movs[0] > 0|| movs[2] > 0)
+	while (movs[0] > 0 || movs[2] > 0)
 	{
 		if (movs[0] > 0)
 			a_strat == TOP ? ft_ra(ps) : ft_rra(ps);
@@ -117,7 +117,7 @@ int		ft_find_smartest_move(t_ps *ps, int movs[2])
 	movs[1] = LIB_INT_MAX;
 	i = 0;
 	j = 0;
-	while (i < ps->size_a)
+	while (i < ps->size_a && movs[1] >= 2)
 	{
 		current_pos = ft_calc_position(ps, ps->pile_a[ft_index(ps, i, PILE_A)]);
 		current_mov = ft_calc_movements(ps, i, current_pos);

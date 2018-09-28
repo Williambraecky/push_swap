@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 12:33:06 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/28 13:30:52 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/28 18:39:25 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,8 @@ int		ft_calc_movements(t_ps *ps, int from, int position)
 	movs[2] = position;
 	movs[3] = ps->size_b - position;
 	movs[4] = LIB_INT_MAX;
-	if ((movs[0] >= movs[2] || movs[2] - movs[0] <= movs[3]) && movs[0] < movs[4])
+	if ((movs[0] >= movs[2] || movs[2] - movs[0] <= movs[3])
+			&& movs[0] < movs[4])
 		movs[4] = movs[0] + ft_max(0, movs[2] - movs[0]);
 	if ((movs[1] >= movs[3] || movs[3] - movs[1] <= movs[2])
 			&& movs[1] < movs[4])
@@ -80,24 +81,4 @@ int		ft_calc_movements(t_ps *ps, int from, int position)
 	if (movs[4] > ft_min(movs[0], movs[1]) + ft_min(movs[2], movs[3]))
 		movs[4] = ft_min(movs[0], movs[1]) + ft_min(movs[2], movs[3]);
 	return (movs[4] + 1);
-	/*int mvmnts;
-	int a_strat;
-	int b_strat;
-	int a_mov;
-	int b_mov;
-
-	if (from <= ps->size_a / 2 && (a_strat = TOP))
-		a_mov = from;
-	else if ((a_strat = BOTTOM))
-		a_mov = ps->size_a - from;
-	if (position <= ps->size_b / 2 && (b_strat = TOP))
-		b_mov = position;
-	else if ((b_strat = BOTTOM))
-		b_mov = ps->size_b - position;
-	mvmnts = 1;
-	if (a_strat == b_strat)
-		mvmnts += ft_min(a_mov, b_mov) + ft_abs(a_mov - b_mov);
-	else
-		mvmnts += a_mov + b_mov;
-	return (mvmnts);*/
 }

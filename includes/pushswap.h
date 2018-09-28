@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:26:29 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/28 12:18:48 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/28 19:09:59 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ int		ft_calc_position(t_ps *ps, int data);
 int		ft_calc_movements(t_ps *ps, int from, int position);
 int		ft_pivot_cmp(int *a, int *b);
 void	ft_pivot_list_del(void *content, size_t len);
+void	ft_quicksortt(t_ps *ps);
 
 #endif
