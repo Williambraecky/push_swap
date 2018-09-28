@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 18:44:15 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/27 17:35:10 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/28 12:46:33 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,8 +117,8 @@ void	ft_check_basics(t_ps *ps)
 	int	canbefixed;
 	int	anomalies;
 
-	if (ps->pile_a[0] > ps->pile_a[1])
-		ft_sa(ps);
+	//if (ps->pile_a[0] > ps->pile_a[1])
+	//	ft_sa(ps);
 	ft_check_rotation_only(ps);
 	if (ft_is_ordered(ps))
 		return ;

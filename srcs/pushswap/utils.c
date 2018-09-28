@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 12:33:06 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/27 22:26:20 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/28 13:30:52 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,37 @@ int		ft_calc_position(t_ps *ps, int data)
 ** 1 calc time to push data to top
 ** + 1 push to other pile
 ** 2 calc time to rotate data to given position
-** TODO: better movements calculation using rr and rrr
+** TODO: check if b_mov - a_mov < b_mov for TOP strat etc
 */
 
 int		ft_calc_movements(t_ps *ps, int from, int position)
 {
-	int	mvmnts;
-	int	a_mov;
-	int	b_mov;
-	int	a_strat;
-	int	b_strat;
+	int	movs[5];
+
+	movs[0] = from;
+	movs[1] = ps->size_a - from;
+	movs[2] = position;
+	movs[3] = ps->size_b - position;
+	movs[4] = LIB_INT_MAX;
+	if ((movs[0] >= movs[2] || movs[2] - movs[0] <= movs[3]) && movs[0] < movs[4])
+		movs[4] = movs[0] + ft_max(0, movs[2] - movs[0]);
+	if ((movs[1] >= movs[3] || movs[3] - movs[1] <= movs[2])
+			&& movs[1] < movs[4])
+		movs[4] = movs[1] + ft_max(0, movs[3] - movs[1]);
+	if ((movs[2] >= movs[0] || movs[0] - movs[2] <= movs[1])
+			&& movs[2] < movs[4])
+		movs[4] = movs[2] + ft_max(0, movs[0] - movs[2]);
+	if ((movs[3] >= movs[1] || movs[1] - movs[3] <= movs[0])
+			&& movs[3] < movs[4])
+		movs[4] = movs[3] + ft_max(0, movs[1] - movs[3]);
+	if (movs[4] > ft_min(movs[0], movs[1]) + ft_min(movs[2], movs[3]))
+		movs[4] = ft_min(movs[0], movs[1]) + ft_min(movs[2], movs[3]);
+	return (movs[4] + 1);
+	/*int mvmnts;
+	int a_strat;
+	int b_strat;
+	int a_mov;
+	int b_mov;
 
 	if (from <= ps->size_a / 2 && (a_strat = TOP))
 		a_mov = from;
@@ -78,5 +99,5 @@ int		ft_calc_movements(t_ps *ps, int from, int position)
 		mvmnts += ft_min(a_mov, b_mov) + ft_abs(a_mov - b_mov);
 	else
 		mvmnts += a_mov + b_mov;
-	return (mvmnts);
+	return (mvmnts);*/
 }

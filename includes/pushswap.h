@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:26:29 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/27 22:06:57 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/28 12:18:48 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # define TOP 1
 # define BOTTOM 2
+# define BOTH 3
 
 /*
 ** Checks
