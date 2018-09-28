@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/14 10:55:41 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/25 14:53:44 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/09/28 18:49:35 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ void		ft_swapint(int *a, int *b);
 void		ft_swapshort(short *a, short *b);
 void		ft_swaplong(long *a, long *b);
 int			ft_intcmp(int a, int b);
+void		ft_intsort(int *tab, size_t len, int (*cmp)());
 
 #endif
