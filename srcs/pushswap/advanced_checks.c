@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 12:19:51 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/28 17:36:49 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/04 20:18:10 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int		ft_find_smartest_move(t_ps *ps, int movs[2])
 	movs[1] = LIB_INT_MAX;
 	i = 0;
 	j = 0;
-	while (i < ps->size_a && movs[1] >= 2)
+	while (i < ps->size_a && movs[1] >= 3)
 	{
 		current_pos = ft_calc_position(ps, ps->pile_a[ft_index(ps, i, PILE_A)]);
 		current_mov = ft_calc_movements(ps, i, current_pos);
@@ -138,10 +138,11 @@ void	ft_advanced_checks(t_ps *ps)
 	int	j;
 	int mvmnts;
 
-	while (ps->size_a)
+	while (ps->size_a && !ft_is_ordered(ps))
 	{
 		j = ft_find_smartest_move(ps, movs);
 		ft_push_position(ps, j, movs[0]);
+		ft_check_rotation_only(ps);
 	}
 	mvmnts = ft_find_biggest_b(ps);
 	if (mvmnts <= ps->size_b / 2)
@@ -151,5 +152,12 @@ void	ft_advanced_checks(t_ps *ps)
 		while (mvmnts++ < ps->size_b)
 			ft_rrb(ps);
 	while (ps->size_b)
+	{
+		if (ps->pile_a[ft_index(ps, ps->size_a - 1, PILE_A)] >
+				ps->pile_b[ft_index(ps, 0, PILE_B)] &&
+			ps->pile_a[ft_index(ps, ps->size_a - 1, PILE_A)] <
+				ps->pile_a[ft_index(ps, 0, PILE_A)])
+			ft_rra(ps);
 		ft_pa(ps);
+	}
 }

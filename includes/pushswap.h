@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:26:29 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/28 19:09:59 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/04 19:56:02 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 void	ft_check_basics(t_ps *ps);
 void	ft_advanced_checks(t_ps *ps);
+void	ft_check_rotation_only(t_ps *ps);
 
 /*
 ** Utils

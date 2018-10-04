@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 18:44:15 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/28 12:46:33 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/04 19:54:34 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int		ft_find_smallest(t_ps *ps)
 	i = 0;
 	while (i < ps->size_a)
 	{
-		if (ps->pile_a[i] < ps->pile_a[j])
+		if (ps->pile_a[ft_index(ps, i, PILE_A)] <
+				ps->pile_a[ft_index(ps, j, PILE_A)])
 			j = i;
 		i++;
 	}
@@ -41,8 +42,8 @@ void	ft_check_rotation_only(t_ps *ps)
 	i = 0;
 	while (i < ps->size_a - 1)
 	{
-		if (ft_intcmp(ps->pile_a[(j + i) % ps->size_a],
-					ps->pile_a[(j + i + 1) % ps->size_a]) > 0)
+		if (ps->pile_a[ft_index(ps, (j + i) % ps->size_a, PILE_A)] >
+					ps->pile_a[ft_index(ps, (j + i + 1) % ps->size_a, PILE_A)])
 			return ;
 		i++;
 	}
@@ -68,8 +69,8 @@ int		ft_count_anomalies(t_ps *ps, int *canbefixed)
 	*canbefixed = 1;
 	while (i < ps->size_a - 1)
 	{
-		if (ft_intcmp(ps->pile_a[(j + i) % ps->size_a],
-					ps->pile_a[(j + i + 1) % ps->size_a]) > 0)
+		if (ps->pile_a[ft_index(ps, (j + i) % ps->size_a, PILE_A)] >
+					ps->pile_a[ft_index(ps, (j + i + 1) % ps->size_a, PILE_A)])
 		{
 			if (prev_anomaly)
 				*canbefixed = 0;
@@ -93,7 +94,9 @@ void	ft_fix_anomalies(t_ps *ps, int anomalies)
 	i = ps->size_a;
 	while (i-- && anomalies)
 	{
-		if (ps->pile_a[1] != min && ft_intcmp(ps->pile_a[0], ps->pile_a[1]) > 0)
+		if (ps->pile_a[ft_index(ps, 1, PILE_A)] != min &&
+				ps->pile_a[ft_index(ps, 0, PILE_A)] >
+				ps->pile_a[ft_index(ps, 1, PILE_A)])
 		{
 			anomalies--;
 			ft_sa(ps);

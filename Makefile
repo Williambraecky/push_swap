@@ -6,7 +6,7 @@
 #    By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/25 13:02:54 by wbraeckm          #+#    #+#              #
-#    Updated: 2018/09/25 17:57:42 by wbraeckm         ###   ########.fr        #
+#    Updated: 2018/10/03 11:37:18 by wbraeckm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ $(NAME_CHECKER): $(OBJSUBS) $(OBJ)
 
 $(NAME_PUSHSWAP): $(OBJSUBS) $(OBJ)
 	@printf $(cccyan)
-	@printf "Compiling $(NAME_PUSHSWAP)"
+	@printf "Compiling $(NAME_PUSHSWAP) "
 	@$(CC) $(FLAGS) -o $(NAME_PUSHSWAP) $(PUSHSWAPOBJ) -I$(INCLUDES) \
 -I$(LIBINCLUDES) $(LIBFT)
 	@printf $(cclightgray)[$(ccgreenhard)√$(cclightgray)]$(ccreset)

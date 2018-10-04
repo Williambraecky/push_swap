@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:51:30 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/25 18:03:14 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/04 19:28:15 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,8 @@ int			ft_is_ordered(t_ps *ps)
 	i = 0;
 	while (i < ps->size_a - 1)
 	{
-		if (ft_intcmp(ps->pile_a[i], ps->pile_a[i + 1]) > 0)
+		if (ft_intcmp(ps->pile_a[ft_index(ps, i, PILE_A)],
+					ps->pile_a[ft_index(ps, i + 1, PILE_A)]) > 0)
 			return (0);
 		i++;
 	}

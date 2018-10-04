@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/28 18:40:34 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/28 19:16:34 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/03 11:44:40 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_quicksortt(t_ps *ps)
 
 	i = ps->size_a;
 	pivot = ft_get_pivot(ps, PILE_A, 0, ps->size_a);
-	while (i--)
+	while (ps->size_a > i / 2)
 	{
 		if (ft_intcmp(pivot, ps->pile_a[ft_index(ps, 0, PILE_A)]) <= 0)
 			ft_pb(ps);
