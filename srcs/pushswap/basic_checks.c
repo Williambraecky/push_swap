@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 18:44:15 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/04 19:54:34 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/10 00:35:51 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	ft_check_rotation_only(t_ps *ps)
 	i = 0;
 	while (i < ps->size_a - 1)
 	{
-		if (ps->pile_a[ft_index(ps, (j + i) % ps->size_a, PILE_A)] >
-					ps->pile_a[ft_index(ps, (j + i + 1) % ps->size_a, PILE_A)])
+		if (ft_int_at(ps, (j + i) % ps->size_a, PILE_A) >
+					ft_int_at(ps, (j + i + 1) % ps->size_a, PILE_A))
 			return ;
 		i++;
 	}
@@ -120,12 +120,18 @@ void	ft_check_basics(t_ps *ps)
 	int	canbefixed;
 	int	anomalies;
 
-	//if (ps->pile_a[0] > ps->pile_a[1])
-	//	ft_sa(ps);
 	ft_check_rotation_only(ps);
 	if (ft_is_ordered(ps))
 		return ;
+	if (ps->size_a == 3)
+		ft_sort_3(ps);
+	if (ft_is_ordered(ps))
+		return ;
 	anomalies = ft_count_anomalies(ps, &canbefixed);
-	if (canbefixed)
-		ft_fix_anomalies(ps, anomalies);
+	// if (canbefixed)
+	// 	ft_fix_anomalies(ps, anomalies);
+	if (ft_is_ordered(ps))
+		return ;
+	if (ps->size_a == 4)
+		ft_sort_4(ps);
 }

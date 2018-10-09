@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:26:06 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/25 19:09:18 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/10 00:15:55 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int			ft_is_ordered(t_ps *ps);
 int			ft_index(t_ps *ps, int index, int pile);
 void		ft_print_piles(t_ps *ps);
 int			ft_is_valid_operation(char *str);
+int			ft_int_at(t_ps *ps, int index, int pile);
 
 /*
 ** Operations

@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:51:30 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/04 19:28:15 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/10 00:01:59 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,13 @@ int			ft_index(t_ps *ps, int index, int pile)
 	else if (pile == PILE_B)
 		return (ps->maxsize - ps->size_b + index);
 	return (-1);
+}
+
+int			ft_int_at(t_ps *ps, int index, int pile)
+{
+	if (pile == PILE_A)
+		return (ps->pile_a[ft_index(ps, index, pile)]);
+	return (ps->pile_b[ft_index(ps, index, pile)]);
 }
 
 int			ft_is_ordered(t_ps *ps)
