@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 12:19:51 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/04 20:18:10 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/09 16:31:46 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	ft_both_rotation(t_ps *ps, int movs[5])
 
 /*
 ** Move to top then move to calculated position
-** TODO: better movements calculation based on rr or rrr
 */
 
 void	ft_push_position(t_ps *ps, int from, int position)
@@ -153,11 +152,13 @@ void	ft_advanced_checks(t_ps *ps)
 			ft_rrb(ps);
 	while (ps->size_b)
 	{
-		if (ps->pile_a[ft_index(ps, ps->size_a - 1, PILE_A)] >
+		if (ps->pile_a[ps->maxsize - 1] >
 				ps->pile_b[ft_index(ps, 0, PILE_B)] &&
-			ps->pile_a[ft_index(ps, ps->size_a - 1, PILE_A)] <
+			ps->pile_a[ps->maxsize - 1] <
 				ps->pile_a[ft_index(ps, 0, PILE_A)])
 			ft_rra(ps);
 		ft_pa(ps);
 	}
+	while (ps->pile_a[ps->maxsize - 1] < ps->pile_a[0])
+		ft_rra(ps);
 }

@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/12 11:36:59 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/12 11:45:11 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/06 13:29:59 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strisnumber(const char *str)
 {
-	if (*str == '-' && *(str + 1) != '\0')
+	if ((*str == '-' || *str == '+') && *(str + 1) != '\0')
 		str++;
 	while (*str)
 		if (!ft_isdigit(*str++))
