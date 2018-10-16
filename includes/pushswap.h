@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:26:29 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/10 00:34:51 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/16 14:46:28 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_check_rotation_only(t_ps *ps);
 void	ft_sort_2(t_ps *ps);
 void	ft_sort_3(t_ps *ps);
 void	ft_sort_4(t_ps *ps);
+void	ft_sort_5(t_ps *ps);
 
 /*
 ** Utils
@@ -40,5 +41,7 @@ int		ft_pivot_cmp(int *a, int *b);
 void	ft_pivot_list_del(void *content, size_t len);
 void	ft_quicksortt(t_ps *ps);
 int		ft_find_smallest(t_ps *ps);
+int		ft_fill_mov_map(t_ps *ps, int from, int position, int movs[5]);
+int		ft_find_biggest_b(t_ps *ps);
 
 #endif

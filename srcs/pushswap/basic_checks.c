@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 18:44:15 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/10 18:06:25 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/16 14:31:43 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,21 +113,16 @@ void	ft_fix_anomalies(t_ps *ps, int anomalies)
 
 void	ft_check_basics(t_ps *ps)
 {
-	int	canbefixed;
-	int	anomalies;
-
-	ft_check_rotation_only(ps);
 	if (ft_is_ordered(ps))
 		return ;
-	if (ps->size_a == 3)
+	if (ps->size_a == 2)
+		ft_sort_2(ps);
+	else if (ps->size_a == 3)
 		ft_sort_3(ps);
-	if (ft_is_ordered(ps))
-		return ;
-	anomalies = ft_count_anomalies(ps, &canbefixed);
-	if (canbefixed)
-	 	ft_fix_anomalies(ps, anomalies);
-	if (ft_is_ordered(ps))
-		return ;
-	if (ps->size_a == 4)
+	else if (ps->size_a == 4)
 		ft_sort_4(ps);
+	else if (ps->size_a == 5)
+		ft_sort_5(ps);
+	else
+		ft_check_rotation_only(ps);
 }
