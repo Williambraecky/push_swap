@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 12:19:51 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/09 16:31:46 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/10 18:24:56 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int		ft_find_smartest_move(t_ps *ps, int movs[2])
 	movs[1] = LIB_INT_MAX;
 	i = 0;
 	j = 0;
-	while (i < ps->size_a && movs[1] >= 3)
+	while (i <= ps->size_a / 2 && i <= ps->size_b / 2)
 	{
 		current_pos = ft_calc_position(ps, ps->pile_a[ft_index(ps, i, PILE_A)]);
 		current_mov = ft_calc_movements(ps, i, current_pos);
@@ -127,6 +127,14 @@ int		ft_find_smartest_move(t_ps *ps, int movs[2])
 			movs[1] = current_mov;
 		}
 		i++;
+		current_pos = ft_calc_position(ps, ft_int_at(ps, ps->size_a - i, PILE_A));
+		current_mov = ft_calc_movements(ps, ps->size_a - i, current_pos);
+		if (current_mov < movs[1])
+		{
+			j = ps->size_a - i;
+			movs[0] = current_pos;
+			movs[1] = current_mov;
+		}
 	}
 	return (j);
 }
@@ -137,12 +145,14 @@ void	ft_advanced_checks(t_ps *ps)
 	int	j;
 	int mvmnts;
 
-	while (ps->size_a && !ft_is_ordered(ps))
+	while (ps->size_a > 4 && !ft_is_ordered(ps))
 	{
 		j = ft_find_smartest_move(ps, movs);
 		ft_push_position(ps, j, movs[0]);
 		ft_check_rotation_only(ps);
 	}
+	if (ps->size_a == 4 && !ft_is_ordered(ps))
+		ft_sort_4(ps);
 	mvmnts = ft_find_biggest_b(ps);
 	if (mvmnts <= ps->size_b / 2)
 		while (mvmnts--)
@@ -150,9 +160,13 @@ void	ft_advanced_checks(t_ps *ps)
 	else
 		while (mvmnts++ < ps->size_b)
 			ft_rrb(ps);
+	if (ft_int_at(ps, 0, PILE_A) < ft_int_at(ps, 0, PILE_B))
+			while (ft_int_at(ps, ps->size_a - 1, PILE_A) >
+				ft_int_at(ps, 0, PILE_B))
+				ft_rra(ps);
 	while (ps->size_b)
 	{
-		if (ps->pile_a[ps->maxsize - 1] >
+		while (ps->pile_a[ps->maxsize - 1] >
 				ps->pile_b[ft_index(ps, 0, PILE_B)] &&
 			ps->pile_a[ps->maxsize - 1] <
 				ps->pile_a[ft_index(ps, 0, PILE_A)])

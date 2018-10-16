@@ -6,15 +6,11 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 18:44:15 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/10 00:35:51 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/10 18:06:25 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
-/*
-** /!\ These functions should only be called at the start
-*/
 
 int		ft_find_smallest(t_ps *ps)
 {
@@ -25,8 +21,8 @@ int		ft_find_smallest(t_ps *ps)
 	i = 0;
 	while (i < ps->size_a)
 	{
-		if (ps->pile_a[ft_index(ps, i, PILE_A)] <
-				ps->pile_a[ft_index(ps, j, PILE_A)])
+		if (ft_int_at(ps, i, PILE_A) <
+				ft_int_at(ps, j, PILE_A))
 			j = i;
 		i++;
 	}
@@ -128,8 +124,8 @@ void	ft_check_basics(t_ps *ps)
 	if (ft_is_ordered(ps))
 		return ;
 	anomalies = ft_count_anomalies(ps, &canbefixed);
-	// if (canbefixed)
-	// 	ft_fix_anomalies(ps, anomalies);
+	if (canbefixed)
+	 	ft_fix_anomalies(ps, anomalies);
 	if (ft_is_ordered(ps))
 		return ;
 	if (ps->size_a == 4)
