@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 18:00:56 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/18 19:15:09 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/19 01:15:53 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ t_visu	*ft_init_visu(int argc, char **argv)
 {
 	t_visu	*visu;
 
-	if (!(visu = ft_memalloc(sizeof(visu))))
+	if (!(visu = ft_memalloc(sizeof(*visu))))
 		exit(0);
 	if (!(visu->mlx_ptr = mlx_init()) ||
 		!(visu->win_ptr =
