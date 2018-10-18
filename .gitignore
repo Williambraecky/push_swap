@@ -52,4 +52,5 @@ Mkfile.old
 dkms.conf
 checker
 push_swap
+visualizer
 .clang_complete

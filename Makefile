@@ -6,12 +6,13 @@
 #    By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/25 13:02:54 by wbraeckm          #+#    #+#              #
-#    Updated: 2018/10/06 13:26:56 by wbraeckm         ###   ########.fr        #
+#    Updated: 2018/10/18 18:37:07 by wbraeckm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME_CHECKER = checker
 NAME_PUSHSWAP = push_swap
+NAME_VISU = visualizer
 CC = gcc
 FLAGS = -O3 -Wall -Wextra -Werror
 INCLUDES = ./includes/
@@ -20,6 +21,9 @@ OBJFOLDER = ./obj/
 LIBFOLDER = ./libft/
 LIBINCLUDES = ./libft/includes/
 LIBFT = $(LIBFOLDER)libft.a
+MLXFOLDER = ./minilibx/
+MLXINCLUDES = ./minilibx/
+MLX = $(MLXFOLDER)libmlx.a
 
 ITEMS = $(shell find srcs -type f | grep -E "\.c$$" | sed 's/srcs//g')
 SRCS = $(addprefix $(SRCSFOLDER), $(ITEMS))
@@ -33,6 +37,9 @@ CHECKEROBJ = $(shell find srcs/common srcs/checker -type f | grep -E "\.c$$" \
 | sed -e 's/^srcs/obj/g' | sed 's/.c$$/.o/g')
 PUSHSWAPOBJ = $(shell find srcs/common srcs/pushswap -type f | grep -E "\.c$$" \
 | sed -e 's/^srcs/obj/g' | sed 's/.c$$/.o/g')
+VISUOBJ = $(shell find srcs/common srcs/visualizer -type f \
+| grep -E "\.c$$" \
+| sed -e 's/^srcs/obj/g' | sed 's/.c$$/.o/g')
 
 ccblue = "\33[0;34m"
 ccred = "\033[0;91m"
@@ -42,17 +49,20 @@ cccyan = "\033[0;96m"
 ccreset = "\033[0;0m"
 cclightgray = "\033[0;37m"
 
-all: lib $(NAME_CHECKER) $(NAME_PUSHSWAP)
+all: lib mlx $(NAME_CHECKER) $(NAME_PUSHSWAP) $(NAME_VISU)
 
 $(OBJFOLDER)/%.o:$(SRCSFOLDER)/%.c
 	@printf $(ccblue)
 	@printf "Compiling %-$(LONGEST)s" $(notdir $<)
-	@$(CC) $(FLAGS) -o $@ -c $< -I$(INCLUDES) -I$(LIBINCLUDES)
+	@$(CC) $(FLAGS) -o $@ -c $< -I$(INCLUDES) -I$(LIBINCLUDES) -I$(MLXINCLUDES)
 	@printf $(cclightgray)[$(ccgreenhard)√$(cclightgray)]$(ccreset)
 	@printf "\r"
 
 $(OBJSUBS):
 	@mkdir $@
+
+mlx:
+	@make -C $(MLXFOLDER)
 
 lib:
 	@make -C $(LIBFOLDER)
@@ -73,10 +83,19 @@ $(NAME_PUSHSWAP): $(OBJSUBS) $(OBJ)
 	@printf $(cclightgray)[$(ccgreenhard)√$(cclightgray)]$(ccreset)
 	@printf "                                                     \n"
 
+$(NAME_VISU): $(OBJSUBS) $(OBJ)
+	@printf $(cccyan)
+	@printf "Compiling $(NAME_VISU) "
+	@$(CC) $(FLAGS) -o $(NAME_VISU) $(VISUOBJ) -I$(INCLUDES) \
+-I$(LIBINCLUDES) $(LIBFT) -I$(MLXINCLUDES) $(MLX) -framework OpenGL -framework AppKit
+	@printf $(cclightgray)[$(ccgreenhard)√$(cclightgray)]$(ccreset)
+	@printf "                                                     \n"
+
 clean:
 	@printf $(ccred)
 	rm -rf obj/
 	@make -C $(LIBFOLDER) clean
+	@make -C $(MLXFOLDER) clean
 	@printf $(ccreset)
 
 fclean: clean
