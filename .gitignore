@@ -50,6 +50,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-./checker
-./push_swap
+checker
+push_swap
 .clang_complete
