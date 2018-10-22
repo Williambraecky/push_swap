@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 18:40:12 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/22 17:45:40 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/22 18:08:10 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ int		ft_loop(t_visu *visu)
 	{
 		if (visu->controls.next_move)
 			ft_apply_choice(visu);
+		ft_render(visu);
 		return (0);
 	}
 	visu->controls.ticks += visu->controls.speed;
