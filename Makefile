@@ -6,7 +6,7 @@
 #    By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/25 13:02:54 by wbraeckm          #+#    #+#              #
-#    Updated: 2018/10/18 18:37:07 by wbraeckm         ###   ########.fr        #
+#    Updated: 2018/10/22 17:38:12 by wbraeckm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,8 @@ $(NAME_VISU): $(OBJSUBS) $(OBJ)
 	@printf $(cccyan)
 	@printf "Compiling $(NAME_VISU) "
 	@$(CC) $(FLAGS) -o $(NAME_VISU) $(VISUOBJ) -I$(INCLUDES) \
--I$(LIBINCLUDES) $(LIBFT) -I$(MLXINCLUDES) $(MLX) -framework OpenGL -framework AppKit
+-I$(LIBINCLUDES) $(LIBFT) -I$(MLXINCLUDES) $(MLX) \
+-framework OpenGL -framework AppKit
 	@printf $(cclightgray)[$(ccgreenhard)√$(cclightgray)]$(ccreset)
 	@printf "                                                     \n"
 

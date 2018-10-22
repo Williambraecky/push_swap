@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 18:06:13 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/18 18:39:17 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/22 13:57:01 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void		**ft_lsttoarray(t_list *list)
 	size_t	i;
 
 	len = ft_lstlen(list);
-	if (list == NULL || !(result = ft_memalloc(len)))
+	if (list == NULL || !(result = ft_memalloc(sizeof(*result) * len)))
 		return (NULL);
 	i = 0;
 	while (len--)

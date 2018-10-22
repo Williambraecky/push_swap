@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 18:40:12 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/18 19:12:34 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/22 17:45:40 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	ft_apply_choice(t_visu *visu)
 	}
 	else if (visu->controls.next_move == -1)
 		if (visu->controls.current_move > 0 && (change = 1))
-			ft_get_rev_operation(visu->moves[visu->controls.current_move--])
+			ft_get_rev_operation(visu->moves[--visu->controls.current_move])
 				(visu->ps);
 	if (change)
 		ft_render(visu);
@@ -88,7 +88,7 @@ void	ft_apply_choice(t_visu *visu)
 
 int		ft_loop(t_visu *visu)
 {
-	/*if (visu->controls.next_move ||
+	if (visu->controls.next_move ||
 		visu->controls.current_move == visu->nb_moves)
 		visu->controls.pause = 1;
 	if (visu->controls.pause)
@@ -100,10 +100,13 @@ int		ft_loop(t_visu *visu)
 	visu->controls.ticks += visu->controls.speed;
 	if (visu->controls.ticks < 60)
 		return (0);
-	visu->controls.ticks = 0;
-	ft_get_operation(visu->moves[visu->controls.current_move++])(visu->ps);
-	ft_render(visu);*/
-	(void)visu;
+	while (visu->controls.ticks >= 60
+		&& visu->controls.current_move < visu->nb_moves)
+	{
+		ft_get_operation(visu->moves[visu->controls.current_move++])(visu->ps);
+		visu->controls.ticks -= 60;
+	}
+	ft_render(visu);
 	return (0);
 }
 
@@ -120,9 +123,9 @@ int		ft_handle_keypress(int key, t_visu *visu)
 		visu->controls.next_move = -1;
 	else if (key == RIGHT_KEY)
 		visu->controls.next_move = 1;
-	else if (key == PL_KEY && visu->controls.speed > 2)
+	else if (key == MN_KEY && visu->controls.speed > 2)
 		visu->controls.speed /= 2;
-	else if (key == MN_KEY && visu->controls.speed < 60)
+	else if (key == PL_KEY)
 		visu->controls.speed *= 2;
-	return (1);
+	return (0);
 }

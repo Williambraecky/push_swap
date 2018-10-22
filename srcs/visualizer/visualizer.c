@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 18:00:56 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/19 01:15:53 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/22 17:49:37 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		ft_read_moves(t_visu *visu)
 			ft_lstdel(&list, ft_del_list);
 			return (0);
 		}
-		ft_lstpushback(&list, s, ft_strlen(s));
+		ft_lstpushback(&list, s, (ft_strlen(s) + 1));
 		free(s);
 	}
 	if (ret == -1)
@@ -42,6 +42,7 @@ int		ft_read_moves(t_visu *visu)
 	}
 	visu->moves = (char **)ft_lsttoarray(list);
 	visu->nb_moves = ft_lstlen(list);
+	ft_lstdel(&list, ft_del_list);
 	return (1);
 }
 
@@ -69,6 +70,21 @@ t_visu	*ft_init_visu(int argc, char **argv)
 	return (visu);
 }
 
+void	ft_calcminmax(t_visu *visu)
+{
+	int	i;
+
+	i = 0;
+	visu->min = LIB_INT_MAX;
+	visu->max = LIB_INT_MIN;
+	while (i < visu->ps->size_a)
+	{
+		visu->min = ft_min(visu->min, visu->ps->pile_a[i]);
+		visu->max = ft_max(visu->max, visu->ps->pile_a[i]);
+		i++;
+	}
+}
+
 int		main(int argc, char **argv)
 {
 	t_visu	*visu;
@@ -81,6 +97,7 @@ int		main(int argc, char **argv)
 		return (0);
 	}
 	visu->controls.speed = DEFAULT_SPEED;
+	ft_calcminmax(visu);
 	mlx_loop_hook(visu->mlx_ptr, ft_loop, visu);
 	mlx_key_hook(visu->win_ptr, ft_handle_keypress, visu);
 	ft_render(visu);
