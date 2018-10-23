@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:24:54 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/23 17:57:55 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/23 18:34:29 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_parse_args(t_ps *ps, int argc, char **argv)
 	while (i < argc)
 	{
 		ps->pile_a[i] = ft_atoi(argv[i]);
-		j = i - 1;
+		j = i;
 		while (j-- > 0)
 		{
 			if (ps->pile_a[j] == ps->pile_a[i])
@@ -94,6 +94,6 @@ t_ps	*ft_read_input(int argc, char **argv)
 	ps->size_a = argc - 1;
 	ps->size_b = 0;
 	ps->maxsize = argc - 1;
-	ft_parse_args(ps, argc - 1, argv + 1);
+	ft_parse_args(ps, (argc - 1), &(argv[1]));
 	return (ps);
 }
