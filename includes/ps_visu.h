@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 17:58:15 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/22 17:54:56 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/23 17:21:51 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ int			ft_handle_keypress(int key, t_visu *visu);
 int			ft_loop(t_visu *visu);
 void		ft_render(t_visu *visu);
 void		ft_drawvert(t_visu *visu, t_lin line);
-void		ft_drawrect(t_visu *visu, t_lin line);
+void		ft_drawrect(t_visu *visu, t_lin line, int color);
 
 /*
 ** Color

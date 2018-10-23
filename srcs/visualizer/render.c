@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 19:00:40 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/22 18:08:33 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/23 17:24:33 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@ void	ft_render_a(t_visu *visu)
 	t_lin	line;
 
 	line.x1 = 0;
+	line.y2 = 0;
 	i = 0;
 	while (i < visu->ps->size_a)
 	{
-		line.y1 = (int)((float)i * ((float)WIN_HEIGHT /
-			(float)visu->ps->maxsize));
+		line.y1 = line.y2;
 		line.x2 = ft_lerp(1, WIN_WIDTH / 2 - 1,
 			ft_ilerp((float)visu->min, (float)visu->max,
 			(float)ft_int_at(visu->ps, i, PILE_A)));
 		i++;
-		line.y2 = (int)((float)i * ((float)WIN_HEIGHT /
+		line.y2 = (int)(i * ((float)WIN_HEIGHT /
 			(float)visu->ps->maxsize));
 		line.color =
 			ft_monochrome_p(ft_color_lerp(ft_int_to_color(START_COLOR),
 				ft_int_to_color(END_COLOR), ft_ilerp((float)visu->min,
 				(float)visu->max, (float)ft_int_at(visu->ps, i - 1, PILE_A))));
-		ft_drawrect(visu, line);
+		ft_drawrect(visu, line, ft_color_to_int(line.color.start));
 	}
 }
 
@@ -43,22 +43,22 @@ void	ft_render_b(t_visu *visu)
 	t_lin	line;
 
 	line.x1 = WIN_WIDTH / 2 + 1;
+	line.y2 = 0;
 	i = 0;
 	while (i < visu->ps->size_b)
 	{
-		line.y1 = (int)((float)i * ((float)WIN_HEIGHT /
-			(float)visu->ps->maxsize));
+		line.y1 = line.y2;
 		line.x2 = (int)ft_lerp((float)line.x1, (float)WIN_WIDTH,
 			ft_ilerp((float)visu->min, (float)visu->max,
 			(float)ft_int_at(visu->ps, i, PILE_B)));
 		i++;
-		line.y2 = (int)((float)i * ((float)WIN_HEIGHT /
+		line.y2 = (int)(i * ((float)WIN_HEIGHT /
 			(float)visu->ps->maxsize));
 		line.color =
 			ft_monochrome_p(ft_color_lerp(ft_int_to_color(START_COLOR),
 				ft_int_to_color(END_COLOR), ft_ilerp((float)visu->min,
 				(float)visu->max, (float)ft_int_at(visu->ps, i - 1, PILE_B))));
-		ft_drawrect(visu, line);
+		ft_drawrect(visu, line, ft_color_to_int(line.color.start));
 	}
 }
 
