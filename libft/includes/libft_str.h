@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/14 11:04:28 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/25 15:00:08 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/23 17:51:51 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ char	*ft_strshift(char *str, int shift);
 char	*ft_strformat(const char *format, ...);
 void	ft_strsort(char **tab, size_t len, int (*cmp)());
 int		ft_strisnumber(const char *str);
+size_t	ft_splitlen(char **split);
 
 #endif

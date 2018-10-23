@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:07:50 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/25 18:28:13 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/23 18:00:24 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	ft_read_operations(t_ps *ps)
 			ft_exit_error(NULL);
 		}
 		ft_get_operation(str)(ps);
-		ft_print_piles(ps);
 	}
 	if (ret == -1)
 	{
@@ -66,9 +65,8 @@ int		main(int argc, char *argv[])
 	t_ps *ps;
 
 	if (argc == 1)
-		ft_exit_error(NULL);
+		return (0);
 	ps = ft_read_input(argc, argv);
-	ft_print_piles(ps);
 	ft_read_operations(ps);
 	if (ft_is_ordered(ps) && ps->size_a == ps->maxsize)
 		ft_printf("OK\n");

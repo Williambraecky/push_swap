@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 17:58:15 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/23 17:21:51 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/23 17:40:31 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
 # define WIN_TITLE "Visualizer"
-# define DEFAULT_SPEED 16
+# define DEFAULT_SPEED 60
 # define START_COLOR 0x1E90FF
 # define END_COLOR 0xDC143C
 
