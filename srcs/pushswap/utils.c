@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 12:33:06 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/16 14:54:04 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/23 18:05:11 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,14 +92,6 @@ int		ft_fill_mov_map(t_ps *ps, int from, int position, int movs[5])
 		movs[4] = ft_min(movs[0], movs[1]) + ft_min(movs[2], movs[3]);
 	return (strat);
 }
-
-/*
-** Calculate movements to push data to given position
-** 1 calc time to push data to top
-** + 1 push to other pile
-** 2 calc time to rotate data to given position
-** TODO: check if b_mov - a_mov < b_mov for TOP strat etc
-*/
 
 int		ft_calc_movements(t_ps *ps, int from, int position)
 {
