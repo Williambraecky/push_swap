@@ -6,7 +6,7 @@
 #    By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/25 13:02:54 by wbraeckm          #+#    #+#              #
-#    Updated: 2018/10/23 18:39:16 by wbraeckm         ###   ########.fr        #
+#    Updated: 2018/10/23 19:11:06 by wbraeckm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ $(NAME_CHECKER): $(OBJSUBS) $(OBJ)
 	@printf $(cccyan)
 	@printf "Compiling $(NAME_CHECKER) "
 	@$(CC) $(FLAGS) -o $(NAME_CHECKER) $(CHECKEROBJ) -I$(INCLUDES) \
--I$(LIBINCLUDES) $(LIBFT)
+-I$(LIBINCLUDES) $(LIBFT) -fsanitize=address
 	@printf $(cclightgray)[$(ccgreenhard)√$(cclightgray)]$(ccreset)
 	@printf "                                                     \n"
 
