@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 17:58:15 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/23 17:40:31 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/24 11:32:29 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,18 @@ typedef struct s_ctrl	t_ctrl;
 typedef struct s_lin	t_lin;
 typedef struct s_color	t_color;
 typedef struct s_col_p	t_col_p;
+typedef struct s_image	t_image;
+
+struct		s_image
+{
+	void	*img_ptr;
+	char	*data;
+	int		bpp;
+	int		size_line;
+	int		endian;
+	int		width;
+	int		height;
+};
 
 struct		s_color
 {
@@ -79,7 +91,8 @@ int			ft_handle_keypress(int key, t_visu *visu);
 int			ft_loop(t_visu *visu);
 void		ft_render(t_visu *visu);
 void		ft_drawvert(t_visu *visu, t_lin line);
-void		ft_drawrect(t_visu *visu, t_lin line, int color);
+void		ft_drawrect(t_image *image, t_lin line, int color);
+void		ft_img_put_pixel(t_image *image, int x, int y, int color);
 
 /*
 ** Color

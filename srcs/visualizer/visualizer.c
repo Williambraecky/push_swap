@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 18:00:56 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/22 17:49:37 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/24 11:16:22 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	ft_calcminmax(t_visu *visu)
 int		main(int argc, char **argv)
 {
 	t_visu	*visu;
+	t_lin	line;
 
 	visu = ft_init_visu(argc, argv);
 	if (ft_read_moves(visu) == 0)
@@ -98,6 +99,11 @@ int		main(int argc, char **argv)
 	}
 	visu->controls.speed = DEFAULT_SPEED;
 	ft_calcminmax(visu);
+	line.x1 = WIN_WIDTH / 2;
+	line.y1 = 0;
+	line.y2 = WIN_HEIGHT;
+	line.color = ft_monochrome_p(ft_int_to_color(0xD3D3D3));
+	ft_drawvert(visu, line);
 	mlx_loop_hook(visu->mlx_ptr, ft_loop, visu);
 	mlx_key_hook(visu->win_ptr, ft_handle_keypress, visu);
 	ft_render(visu);
