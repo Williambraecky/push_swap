@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 10:48:40 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/07/24 22:09:00 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/24 16:56:01 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # include "libft.h"
+# include <unistd.h>
 
 # define BUFF_SIZE 512
 
