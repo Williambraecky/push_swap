@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 15:16:44 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/09/27 17:33:28 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/24 19:37:08 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,21 @@
 
 static void	ft_ira(t_ps *ps, int print)
 {
-	int tmp;
+	int	tmp;
+	int	i;
 
 	if (print)
 		ft_putstr("ra\n");
 	if (ps->size_a == 0)
 		return ;
 	tmp = ps->pile_a[ft_index(ps, 0, PILE_A)];
-	ft_memmove(ps->pile_a + ft_index(ps, 0, PILE_A),
-			ps->pile_a + ft_index(ps, 1, PILE_A),
-			(ps->size_a * sizeof(*(ps->pile_a))));
+	i = 0;
+	while (i < ps->size_a - 1)
+	{
+		ps->pile_a[ft_index(ps, i, PILE_A)]
+			= ps->pile_a[ft_index(ps, i + 1, PILE_A)];
+		i++;
+	}
 	ps->pile_a[ft_index(ps, ps->size_a - 1, PILE_A)] = tmp;
 }
 
@@ -34,16 +39,21 @@ void		ft_ra(t_ps *ps)
 
 static void	ft_irb(t_ps *ps, int print)
 {
-	int tmp;
+	int	tmp;
+	int	i;
 
 	if (print)
 		ft_putstr("rb\n");
 	if (ps->size_b == 0)
 		return ;
 	tmp = ps->pile_b[ft_index(ps, 0, PILE_B)];
-	ft_memmove(ps->pile_b + ft_index(ps, 0, PILE_B),
-			ps->pile_b + ft_index(ps, 1, PILE_B),
-			(ps->size_b * sizeof(*(ps->pile_b))));
+	i = 0;
+	while (i < ps->size_b - 1)
+	{
+		ps->pile_b[ft_index(ps, i, PILE_B)]
+			= ps->pile_b[ft_index(ps, i + 1, PILE_B)];
+		i++;
+	}
 	ps->pile_b[ft_index(ps, ps->size_b - 1, PILE_B)] = tmp;
 }
 

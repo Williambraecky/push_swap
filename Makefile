@@ -6,7 +6,7 @@
 #    By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/25 13:02:54 by wbraeckm          #+#    #+#              #
-#    Updated: 2018/10/24 16:51:22 by wbraeckm         ###   ########.fr        #
+#    Updated: 2018/10/24 19:37:18 by wbraeckm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME_CHECKER = checker
 NAME_PUSHSWAP = push_swap
 NAME_VISU = visualizer
 CC = gcc
-FLAGS = -O3 -Wall -Wextra -Werror -g
+FLAGS = -O3 -Wall -Wextra -Werror
 INCLUDES = ./includes/
 SRCSFOLDER = ./srcs/
 OBJFOLDER = ./obj/

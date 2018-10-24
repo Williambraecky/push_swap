@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:07:50 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/24 16:58:27 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/24 19:22:27 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,7 @@ void	ft_read_operations(t_ps *ps)
 {
 	char	*str;
 	int		ret;
-	int		op;
 
-	op = 0;
 	while ((ret = get_next_line(0, &str)) > 0)
 	{
 		if (!ft_is_valid_operation(str))

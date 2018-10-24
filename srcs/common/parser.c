@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:24:54 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/23 19:10:51 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/24 19:16:57 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_parse_args(t_ps *ps, int argc, char **argv)
 			if (ps->pile_a[j] == ps->pile_a[i])
 			{
 				ft_free_ps(ps);
-				return (ft_exit_error(NULL));
+				ft_exit_error(NULL);
 			}
 		}
 		ps->intlen_max = ft_max(ps->intlen_max,
@@ -62,7 +62,7 @@ t_ps	*ft_parse_one_arg(char *str)
 		ft_exit_error("Out of memory");
 	argc = ft_splitlen(argv);
 	if (!ft_check_arg_validity(argc, argv))
-		ft_exit_error("TEST");
+		ft_exit_error(NULL);
 	if (!(ps = ft_memalloc(sizeof(*ps))))
 		ft_exit_error("Out of memory");
 	if (!(ps->pile_a = ft_memalloc(sizeof(*(ps->pile_a)) * (argc))) ||
