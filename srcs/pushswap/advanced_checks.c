@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 12:19:51 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/23 17:04:59 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/26 17:54:11 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ft_find_smartest_move(t_ps *ps, int movs[5])
 	movs[0] = LIB_INT_MAX;
 	movs[1] = LIB_INT_MAX;
 	i = 0;
-	while (i <= ps->size_a / 2)
+	while (i <= ps->size_a / 2 && movs[1] > 2)
 	{
 		movs[2] = ft_calc_position(ps, ft_int_at(ps, i, PILE_A));
 		movs[3] = ft_calc_movements(ps, i, movs[2]);
