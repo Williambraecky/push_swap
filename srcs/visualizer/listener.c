@@ -6,13 +6,13 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 18:40:12 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/24 11:32:26 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/27 15:44:26 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps_visu.h"
 
-void	(*ft_get_operation(char *str))()
+void	(*ft_getop(char *str))()
 {
 	if (ft_strequ(str, "sa"))
 		return (ft_sa);
@@ -39,7 +39,7 @@ void	(*ft_get_operation(char *str))()
 	return (NULL);
 }
 
-void	(*ft_get_rev_operation(char *str))()
+void	(*ft_getrop(char *str))()
 {
 	if (ft_strequ(str, "sa"))
 		return (ft_sa);
@@ -74,13 +74,11 @@ void	ft_apply_choice(t_visu *visu)
 	if (visu->controls.next_move == 1)
 	{
 		if (visu->controls.current_move < visu->nb_moves && (change = 1))
-			ft_get_operation(visu->moves[visu->controls.current_move++])
-				(visu->ps);
+			ft_getop(visu->moves[visu->controls.current_move++])(visu->ps);
 	}
 	else if (visu->controls.next_move == -1)
 		if (visu->controls.current_move > 0 && (change = 1))
-			ft_get_rev_operation(visu->moves[--visu->controls.current_move])
-				(visu->ps);
+			ft_getrop(visu->moves[--visu->controls.current_move])(visu->ps);
 	if (change)
 		ft_render(visu);
 	visu->controls.next_move = 0;
@@ -88,8 +86,9 @@ void	ft_apply_choice(t_visu *visu)
 
 int		ft_loop(t_visu *visu)
 {
-	if (visu->controls.next_move ||
-		visu->controls.current_move == visu->nb_moves)
+	if (visu->controls.next_move || (visu->controls.reverse ?
+		visu->controls.current_move == 0 :
+		visu->controls.current_move == visu->nb_moves))
 		visu->controls.pause = 1;
 	if (visu->controls.pause)
 	{
@@ -98,13 +97,16 @@ int		ft_loop(t_visu *visu)
 		ft_render(visu);
 		return (0);
 	}
-	visu->controls.ticks += visu->controls.speed;
-	if (visu->controls.ticks < 60)
+	if ((visu->controls.ticks += visu->controls.speed) < 60)
 		return (0);
-	while (visu->controls.ticks >= 60
-		&& visu->controls.current_move < visu->nb_moves)
+	while (visu->controls.ticks >= 60 && (visu->controls.reverse ?
+		visu->controls.current_move > 0 :
+		visu->controls.current_move < visu->nb_moves))
 	{
-		ft_get_operation(visu->moves[visu->controls.current_move++])(visu->ps);
+		if (visu->controls.reverse)
+			ft_getrop(visu->moves[--visu->controls.current_move])(visu->ps);
+		else
+			ft_getop(visu->moves[visu->controls.current_move++])(visu->ps);
 		visu->controls.ticks -= 60;
 	}
 	ft_render(visu);
@@ -128,5 +130,7 @@ int		ft_handle_keypress(int key, t_visu *visu)
 		visu->controls.speed /= 2;
 	else if (key == PL_KEY)
 		visu->controls.speed *= 2;
+	else if (key == R_KEY)
+		visu->controls.reverse ^= 1;
 	return (0);
 }

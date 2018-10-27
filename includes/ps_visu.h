@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 17:58:15 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/24 11:32:29 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/27 15:28:36 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ struct		s_ctrl
 	int		ticks;
 	size_t	current_move;
 	int		next_move;
+	int		reverse;
 };
 
 struct		s_visu
