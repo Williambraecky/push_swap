@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 18:00:56 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/28 15:35:37 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/28 15:40:52 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,13 +71,7 @@ t_visu	*ft_init_visu(int argc, char **argv)
 		free(visu);
 		exit(0);
 	}
-	if (!(visu->ps = ft_read_input(argc, argv)))
-	{
-		ft_printf_fd(2, "Error\n");
-		mlx_destroy_window(visu->mlx_ptr, visu->win_ptr);
-		free(visu);
-		exit(0);
-	}
+	visu->ps = ft_read_input(argc, argv);
 	visu->ps->opt = opt;
 	return (visu);
 }
