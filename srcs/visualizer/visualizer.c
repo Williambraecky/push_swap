@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 18:00:56 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/24 17:20:38 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/28 15:35:37 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,18 @@ int		ft_read_moves(t_visu *visu)
 	int		ret;
 
 	list = NULL;
-	while ((ret = get_next_line(0, &s)) > 0)
+	while ((ret = get_next_line(visu->ps->opt.fd, &s)) > 0)
 	{
 		if (!ft_is_valid_operation(s))
 		{
 			ft_lstdel(&list, ft_del_list);
+			ft_close_files(visu->ps->opt);
 			return (0);
 		}
 		ft_lstpushback(&list, s, (ft_strlen(s) + 1));
 		free(s);
 	}
+	ft_close_files(visu->ps->opt);
 	if (ret == -1)
 	{
 		ft_lstdel(&list, ft_del_list);
@@ -49,7 +51,16 @@ int		ft_read_moves(t_visu *visu)
 t_visu	*ft_init_visu(int argc, char **argv)
 {
 	t_visu	*visu;
+	t_opt	opt;
 
+	if (argc == 1)
+		exit(0);
+	opt = ft_read_opts(&argc, &argv);
+	if (argc == 1)
+	{
+		ft_close_files(opt);
+		exit(0);
+	}
 	if (!(visu = ft_memalloc(sizeof(t_visu))))
 		exit(0);
 	if (!(visu->mlx_ptr = mlx_init()) ||
@@ -67,6 +78,7 @@ t_visu	*ft_init_visu(int argc, char **argv)
 		free(visu);
 		exit(0);
 	}
+	visu->ps->opt = opt;
 	return (visu);
 }
 

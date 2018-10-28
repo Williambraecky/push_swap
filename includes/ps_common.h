@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:26:06 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/10 17:59:13 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/28 15:03:01 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,22 @@
 
 # include "libft.h"
 # include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
 
 # define PILE_A 0
 # define PILE_B 1
 
 typedef struct s_pushswap	t_ps;
+typedef struct s_opt		t_opt;
+
+struct		s_opt
+{
+	int		fd;
+	int		print_piles;
+	int		o_fd;
+};
+
 struct		s_pushswap
 {
 	int		*pile_a;
@@ -29,6 +40,7 @@ struct		s_pushswap
 	int		maxsize;
 	int		intlen_max;
 	int		print;
+	t_opt	opt;
 };
 
 /*
@@ -48,6 +60,8 @@ int			ft_index(t_ps *ps, int index, int pile);
 void		ft_print_piles(t_ps *ps);
 int			ft_is_valid_operation(char *str);
 int			ft_int_at(t_ps *ps, int index, int pile);
+t_opt		ft_read_opts(int *argc, char ***argv);
+void		ft_close_files(t_opt opt);
 
 /*
 ** Operations

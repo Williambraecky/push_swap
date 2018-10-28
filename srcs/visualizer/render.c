@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 19:00:40 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/27 15:39:59 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/28 15:37:46 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,4 +116,7 @@ void	ft_render(t_visu *visu)
 		mlx_string_put(visu->mlx_ptr, visu->win_ptr, 10, 20, 0xD3D3D3, str);
 	if (visu->controls.reverse == 1 && (str = "Reversed"))
 		mlx_string_put(visu->mlx_ptr, visu->win_ptr, 10, 35, 0xD3D3D3, str);
+	if (ft_is_ordered(visu->ps) && visu->ps->size_a == visu->ps->maxsize)
+		mlx_string_put(visu->mlx_ptr, visu->win_ptr, 10, 50, 0xD3D3D3,
+			"Ordered");
 }

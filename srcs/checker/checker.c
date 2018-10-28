@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:07:50 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/24 19:22:27 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/28 15:18:24 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,23 @@ void	ft_read_operations(t_ps *ps)
 	char	*str;
 	int		ret;
 
-	while ((ret = get_next_line(0, &str)) > 0)
+	while ((ret = get_next_line(ps->opt.fd, &str)) > 0)
 	{
 		if (!ft_is_valid_operation(str))
 		{
+			ft_close_files(ps->opt);
 			ft_free_ps(ps);
-			ft_exit_error(NULL);
+			ft_printf("LIGNE LUE \"%s\"\n", str);
+			ft_exit_error("ICI");
 		}
 		ft_get_operation(str)(ps);
+		if (ps->opt.print_piles)
+			ft_print_piles(ps);
 		free(str);
 	}
 	if (ret == -1)
 	{
+		ft_close_files(ps->opt);
 		ft_free_ps(ps);
 		ft_exit_error(NULL);
 	}
@@ -63,16 +68,27 @@ void	ft_read_operations(t_ps *ps)
 
 int		main(int argc, char *argv[])
 {
-	t_ps *ps;
+	t_ps	*ps;
+	t_opt	opt;
 
 	if (argc == 1)
 		return (0);
+	opt = ft_read_opts(&argc, &argv);
+	if (argc == 1)
+	{
+		ft_close_files(opt);
+		return (0);
+	}
 	ps = ft_read_input(argc, argv);
+	ps->opt = opt;
+	if (opt.print_piles)
+		ft_print_piles(ps);
 	ft_read_operations(ps);
 	if (ft_is_ordered(ps) && ps->size_a == ps->maxsize)
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
+	ft_close_files(opt);
 	ft_free_ps(ps);
 	return (0);
 }
