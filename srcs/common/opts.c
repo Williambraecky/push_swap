@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 14:29:47 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/28 15:27:54 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/29 11:20:27 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ t_opt	ft_read_opts(int *argc, char ***argv)
 	opt.fd = 0;
 	opt.print_piles = 0;
 	opt.o_fd = 1;
-	while ((*argv)[1][0] == '-')
+	while ((*argv)[1][0] == '-' && !ft_strisnumber((*argv)[1]))
 	{
 		if (ft_strequ((*argv)[1], "-v"))
 		{

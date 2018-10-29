@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:24:54 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/28 15:00:08 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/29 11:23:05 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 int		ft_check_arg_validity(int argc, char **argv)
 {
-	int i;
+	int		i;
+	long	l;
 
 	i = 0;
 	while (i < argc)
 	{
-		if (!ft_strisnumber(argv[i]) ||
-				ft_strlen(argv[i]) > 11 ||
-				ft_atol(argv[i]) > (long)LIB_INT_MAX)
+		l = ft_atol(argv[i]);
+		if (!ft_strisnumber(argv[i]) || ft_strlen(argv[i]) > 11 ||
+				l > (long)LIB_INT_MAX || l < (long)LIB_INT_MIN)
 			return (0);
 		i++;
 	}
