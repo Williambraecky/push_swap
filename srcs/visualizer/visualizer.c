@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 18:00:56 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/28 15:40:52 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/10/29 11:14:55 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,8 @@ int		ft_read_moves(t_visu *visu)
 	list = NULL;
 	while ((ret = get_next_line(visu->ps->opt.fd, &s)) > 0)
 	{
-		if (!ft_is_valid_operation(s))
-		{
-			ft_lstdel(&list, ft_del_list);
-			ft_close_files(visu->ps->opt);
-			return (0);
-		}
+		if (!ft_is_valid_operation(s) && (ret = -1))
+			break ;
 		ft_lstpushback(&list, s, (ft_strlen(s) + 1));
 		free(s);
 	}
