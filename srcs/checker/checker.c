@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/25 14:07:50 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/28 15:18:24 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/11/05 17:53:40 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ void	ft_read_operations(t_ps *ps)
 		{
 			ft_close_files(ps->opt);
 			ft_free_ps(ps);
-			ft_printf("LIGNE LUE \"%s\"\n", str);
-			ft_exit_error("ICI");
 		}
 		ft_get_operation(str)(ps);
 		if (ps->opt.print_piles)
