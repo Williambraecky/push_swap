@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 19:00:40 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/11/28 13:06:46 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/11/28 13:11:39 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ t_image	*ft_new_image(t_visu *visu, int width, int height)
 		return (NULL);
 	img->img_ptr = mlx_new_image(visu->mlx_ptr, width, height);
 	if (img->img_ptr == NULL)
+	{
+		ft_destroy_visu(visu);
 		ft_exit_error("Could not allocate enough memory");
+	}
 	img->data = mlx_get_data_addr(img->img_ptr,
 			&(img->bpp), &(img->size_line), &(img->endian));
 	img->bpp /= 8;
