@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/18 19:00:40 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/28 15:37:46 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/11/28 13:06:46 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,16 +102,18 @@ void	ft_render(t_visu *visu)
 	ft_render_b(visu);
 	str = ft_strformat("Size A: %d", visu->ps->size_a);
 	mlx_string_put(visu->mlx_ptr, visu->win_ptr,
-		WIN_WIDTH / 2 / 2, 50, 0xD3D3D3, str);
-	free(str);
+		WIN_WIDTH / 2 / 2, 50, 0xD3D3D3, str == NULL ? "(NULL)" : str);
+	ft_strdel(&str);
 	str = ft_strformat("Size B: %d", visu->ps->size_b);
 	mlx_string_put(visu->mlx_ptr, visu->win_ptr,
-		WIN_WIDTH / 2 + (WIN_WIDTH / 2 / 2), 50, 0xD3D3D3, str);
-	free(str);
+		WIN_WIDTH / 2 + (WIN_WIDTH / 2 / 2), 50, 0xD3D3D3,
+		str == NULL ? "(NULL)" : str);
+	ft_strdel(&str);
 	str = ft_strformat("Moves: %d; Current move: %d", visu->nb_moves,
 		visu->controls.current_move);
-	mlx_string_put(visu->mlx_ptr, visu->win_ptr, 10, 5, 0xD3D3D3, str);
-	free(str);
+	mlx_string_put(visu->mlx_ptr, visu->win_ptr, 10, 5, 0xD3D3D3,
+		str == NULL ? "(NULL)" : str);
+	ft_strdel(&str);
 	if (visu->controls.pause == 1 && (str = "Paused"))
 		mlx_string_put(visu->mlx_ptr, visu->win_ptr, 10, 20, 0xD3D3D3, str);
 	if (visu->controls.reverse == 1 && (str = "Reversed"))
