@@ -6,7 +6,7 @@
 /*   By: wbraeckm <wbraeckm@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/28 14:29:47 by wbraeckm          #+#    #+#             */
-/*   Updated: 2018/10/29 11:20:27 by wbraeckm         ###   ########.fr       */
+/*   Updated: 2018/12/10 14:55:02 by wbraeckm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ void	ft_define_output(t_opt *opt, int *argc, char ***argv)
 
 void	ft_close_files(t_opt opt)
 {
+	char	*str;
+
+	while (opt.fd != 0 && get_next_line(opt.fd, &str) == 1)
+		free(str);
 	if (opt.fd != 0)
 		close(opt.fd);
 	if (opt.o_fd != 1)
